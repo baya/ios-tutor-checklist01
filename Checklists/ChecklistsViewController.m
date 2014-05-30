@@ -37,6 +37,11 @@
     _row2text = @"Learn iOS development";
     _row3text = @"Soccer practice";
     _row4text = @"Eat ice cream";
+    
+    _row1checked = YES;
+    _row2checked = YES;
+    _row4checked = YES;
+    
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -63,11 +68,13 @@
         label.text = _row1text;
     } else if (indexPath.row == 2){
         label.text = _row2text;
-    } else if (indexPath.row == 3) {
+    } else if (indexPath.row == 3){
         label.text = _row3text;
-    } else if (indexPath.row == 4) {
+    } else if (indexPath.row == 4){
         label.text = _row4text;
     }
+    
+    [self configureCheckmarkForCeil:cell atIndexpath:indexPath];
     
     return cell;
 }
@@ -75,32 +82,46 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    if (indexPath.row == 0) {
+        _row0checked = !_row0checked;
+    } else if (indexPath.row == 1) {
+        _row1checked = !_row1checked;
+    } else if (indexPath.row == 2) {
+        _row2checked = !_row2checked;
+    } else if (indexPath.row == 3) {
+        _row3checked = !_row3checked;
+    } else if (indexPath.row == 4) {
+        _row4checked = !_row4checked;
+    }
+    
+    [self configureCheckmarkForCeil:cell atIndexpath:indexPath];
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)configureCheckmarkForCeil:(UITableViewCell *)cell atIndexpath:(NSIndexPath *)indexPath
+{
     BOOL isChecked = NO;
     
     if (indexPath.row == 0) {
         isChecked = _row0checked;
-        _row0checked = !_row0checked;
     } else if (indexPath.row == 1){
         isChecked = _row1checked;
-        _row1checked = !_row1checked;
     } else if (indexPath.row == 2){
         isChecked = _row2checked;
-        _row2checked = !_row2checked;
     } else if (indexPath.row == 3){
         isChecked = _row3checked;
-        _row3checked = !_row3checked;
     } else if (indexPath.row == 4){
         isChecked = _row4checked;
-        _row4checked = !_row4checked;
     }
     
     if(isChecked){
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    } else {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
     }
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
 }
 
 @end

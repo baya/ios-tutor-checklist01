@@ -21,6 +21,7 @@
 		9EFC352E19385FF500CAD1AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EFC351019385FF500CAD1AE /* UIKit.framework */; };
 		9EFC353619385FF500CAD1AE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9EFC353419385FF500CAD1AE /* InfoPlist.strings */; };
 		9EFC353819385FF500CAD1AE /* ChecklistsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFC353719385FF500CAD1AE /* ChecklistsTests.m */; };
+		9EFC354319395B2600CAD1AE /* ChecklistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFC354219395B2600CAD1AE /* ChecklistItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		9EFC353319385FF500CAD1AE /* ChecklistsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ChecklistsTests-Info.plist"; sourceTree = "<group>"; };
 		9EFC353519385FF500CAD1AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9EFC353719385FF500CAD1AE /* ChecklistsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChecklistsTests.m; sourceTree = "<group>"; };
+		9EFC354119395B2600CAD1AE /* ChecklistItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChecklistItem.h; sourceTree = "<group>"; };
+		9EFC354219395B2600CAD1AE /* ChecklistItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChecklistItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,8 @@
 				9EFC352219385FF500CAD1AE /* ChecklistsViewController.m */,
 				9EFC352419385FF500CAD1AE /* Images.xcassets */,
 				9EFC351319385FF500CAD1AE /* Supporting Files */,
+				9EFC354119395B2600CAD1AE /* ChecklistItem.h */,
+				9EFC354219395B2600CAD1AE /* ChecklistItem.m */,
 			);
 			path = Checklists;
 			sourceTree = "<group>";
@@ -253,6 +258,7 @@
 				9EFC351919385FF500CAD1AE /* main.m in Sources */,
 				9EFC351D19385FF500CAD1AE /* ChecklistsAppDelegate.m in Sources */,
 				9EFC352319385FF500CAD1AE /* ChecklistsViewController.m in Sources */,
+				9EFC354319395B2600CAD1AE /* ChecklistItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

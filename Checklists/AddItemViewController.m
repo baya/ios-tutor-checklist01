@@ -7,6 +7,7 @@
 //
 
 #import "AddItemViewController.h"
+#import "ChecklistItem.h"
 
 @interface AddItemViewController ()
 
@@ -42,18 +43,36 @@
 
 - (IBAction)cancel
 {
-    NSLog(@"Contents of the text field: %@", self.textField.text);
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self.delegate addItemViewControllerDidCancel:self];
 }
 
 - (IBAction)done
 {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    ChecklistItem *item = [[ChecklistItem alloc] init];
+    item.text= self.textField.text;
+    item.checked = NO;
+    
+    [self.delegate addItemViewController:self didFinishAddingItem:item];
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.textField becomeFirstResponder];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    
+    self.doneBarButton.enabled = ([newText length] > 0);
+    
+    return YES;
 }
 
 @end

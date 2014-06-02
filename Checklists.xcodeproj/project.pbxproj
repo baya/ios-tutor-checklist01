@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9EF55E41193C98D4003DE35A /* AllListsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF55E40193C98D4003DE35A /* AllListsViewController.m */; };
+		9EF55E44193CC38F003DE35A /* Checklist.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF55E43193CC38F003DE35A /* Checklist.m */; };
 		9EFC350D19385FF500CAD1AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EFC350C19385FF500CAD1AE /* Foundation.framework */; };
 		9EFC350F19385FF500CAD1AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EFC350E19385FF500CAD1AE /* CoreGraphics.framework */; };
 		9EFC351119385FF500CAD1AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EFC351019385FF500CAD1AE /* UIKit.framework */; };
@@ -39,6 +40,8 @@
 /* Begin PBXFileReference section */
 		9EF55E3F193C98D4003DE35A /* AllListsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllListsViewController.h; sourceTree = "<group>"; };
 		9EF55E40193C98D4003DE35A /* AllListsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllListsViewController.m; sourceTree = "<group>"; };
+		9EF55E42193CC38F003DE35A /* Checklist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Checklist.h; sourceTree = "<group>"; };
+		9EF55E43193CC38F003DE35A /* Checklist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Checklist.m; sourceTree = "<group>"; };
 		9EFC350919385FF500CAD1AE /* Checklists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Checklists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EFC350C19385FF500CAD1AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9EFC350E19385FF500CAD1AE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -134,6 +137,8 @@
 				9EFC3545193A1A2300CAD1AE /* ItemDetailViewController.m */,
 				9EF55E3F193C98D4003DE35A /* AllListsViewController.h */,
 				9EF55E40193C98D4003DE35A /* AllListsViewController.m */,
+				9EF55E42193CC38F003DE35A /* Checklist.h */,
+				9EF55E43193CC38F003DE35A /* Checklist.m */,
 			);
 			path = Checklists;
 			sourceTree = "<group>";
@@ -271,6 +276,7 @@
 				9EFC352319385FF500CAD1AE /* ChecklistViewController.m in Sources */,
 				9EFC3546193A1A2300CAD1AE /* ItemDetailViewController.m in Sources */,
 				9EFC354319395B2600CAD1AE /* ChecklistItem.m in Sources */,
+				9EF55E44193CC38F003DE35A /* Checklist.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

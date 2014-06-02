@@ -1,19 +1,19 @@
 //
-//  ChecklistsViewController.m
+//  ChecklistViewController.m
 //  Checklists
 //
 //  Created by jiangguimin on 14-5-30.
 //  Copyright (c) 2014年 Dalnpo. All rights reserved.
 //
 
-#import "ChecklistsViewController.h"
+#import "ChecklistViewController.h"
 #import "ChecklistItem.h"
 
-@interface ChecklistsViewController ()
+@interface ChecklistViewController ()
 
 @end
 
-@implementation ChecklistsViewController
+@implementation ChecklistViewController
 
 {
     

@@ -7,12 +7,23 @@
 //
 
 #import "ChecklistsAppDelegate.h"
+#import "AllListsViewController.h"
+#import "DataModel.h"
 
 @implementation ChecklistsAppDelegate
+{
+    DataModel *_dataModel;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    _dataModel = [[DataModel alloc] init];
+    
+    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+    AllListsViewController *controller = navigationController.viewControllers[0];
+    
+    controller.dataModel = _dataModel;
+    
     return YES;
 }
 							
@@ -24,8 +35,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [self saveData];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -40,7 +50,12 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [self saveData];
+}
+
+- (void)saveData
+{
+    [_dataModel saveChecklists];
 }
 
 @end

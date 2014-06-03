@@ -46,7 +46,7 @@
     
     NSInteger index = [self.dataModel indexOfSelectedChecklist];
     
-    if (index != -1) {
+    if (index >= 0 && index < [self.dataModel.lists count]) {
         Checklist *checklist = self.dataModel.lists[index];
         [self performSegueWithIdentifier:@"ShowChecklist" sender:checklist];
     }

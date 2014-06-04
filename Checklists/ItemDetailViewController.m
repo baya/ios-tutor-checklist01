@@ -23,9 +23,16 @@
 {
     _datePickerVisible = YES;
     
+    NSIndexPath *indexPathDateRow = [NSIndexPath indexPathForRow:1 inSection:1];
     NSIndexPath *indexPathDatePicker = [NSIndexPath indexPathForRow:2 inSection:1];
     
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPathDateRow];
+    cell.detailTextLabel.textColor = cell.detailTextLabel.tintColor;
+    
+    [self.tableView beginUpdates];
     [self.tableView insertRowsAtIndexPaths:@[indexPathDatePicker] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView reloadRowsAtIndexPaths:@[indexPathDateRow] withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView endUpdates];
     
     UITableViewCell *datePickerCell = [self.tableView cellForRowAtIndexPath:indexPathDatePicker];
     
@@ -68,6 +75,7 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
+    NSLog(@"%@", _dueDate);
     self.dueDateLabel.text = [formatter stringFromDate:_dueDate];
 }
 
@@ -180,7 +188,12 @@
     [self.textField resignFirstResponder];
     
     if (indexPath.section == 1 && indexPath.row == 1) {
-        [self showDatePicker];
+        
+        if (!_datePickerVisible) {
+            [self showDatePicker];
+        } else {
+            [self hideDatePicker];
+        }
     }
 }
 
@@ -193,6 +206,29 @@
     } else {
         return [super tableView:tableView indentationLevelForRowAtIndexPath:indexPath];
     }
+}
+
+- (void)hideDatePicker
+{
+    if (_datePickerVisible) {
+        _datePickerVisible = NO;
+        
+        NSIndexPath *indexPathDateRow = [NSIndexPath indexPathForRow:1 inSection:1];
+        NSIndexPath *indexPathDatePicker = [NSIndexPath indexPathForRow:2 inSection:1];
+        
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPathDateRow];
+        cell.detailTextLabel.textColor = [UIColor colorWithWhite:0.0f alpha:0.5f];
+        
+        [self.tableView beginUpdates];
+        [self.tableView reloadRowsAtIndexPaths:@[indexPathDateRow] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPathDatePicker] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView endUpdates];
+    }
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self hideDatePicker];
 }
 
 @end

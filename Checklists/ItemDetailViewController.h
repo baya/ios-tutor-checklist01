@@ -26,6 +26,9 @@
 @property (weak, nonatomic) id <ItemDetailViewControllerDelegate> delegate;
 @property (strong, nonatomic) ChecklistItem *itemToEdit;
 
+@property (nonatomic, weak) IBOutlet UISwitch *switchControl;
+@property (nonatomic, weak) IBOutlet UILabel *dueDateLabel;
+
 - (IBAction)cancel;
 - (IBAction)done;
 

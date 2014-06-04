@@ -72,4 +72,10 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *iconName = _icons[indexPath.row];
+    [self.delegate iconPicker:self didPickIcon:iconName];
+}
+
 @end

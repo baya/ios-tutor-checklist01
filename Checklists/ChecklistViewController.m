@@ -68,6 +68,8 @@
 {
     UILabel *label = (UILabel *)[cell viewWithTag:1001];
     
+    label.textColor = self.view.tintColor;
+    
     if (item.checked) {
         label.text = @"√";
     } else {
@@ -78,7 +80,9 @@
 - (void)configureTextForCell:(UITableViewCell *)cell withChecklistItem:(ChecklistItem *)item
 {
     UILabel *label = (UILabel *)[cell viewWithTag:1000];
-    label.text = item.text;
+    // label.text = item.text;
+    
+    label.text = [NSString stringWithFormat:@"%d: %@", item.itemId, item.text];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath

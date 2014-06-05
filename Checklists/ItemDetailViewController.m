@@ -75,7 +75,6 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
-    NSLog(@"%@", _dueDate);
     self.dueDateLabel.text = [formatter stringFromDate:_dueDate];
 }
 

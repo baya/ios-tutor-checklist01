@@ -18,5 +18,6 @@
 
 - (void)toggleChecked;
 - (void)scheduleNotification;
+- (NSString *)duteDateString;
 
 @end

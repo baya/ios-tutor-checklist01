@@ -48,6 +48,7 @@
     
     [self configureTextForCell:cell withChecklistItem:item];
     [self configureCheckmarkForCeil:cell withChecklistItem:item];
+    [self configureDuedateTextForCell:cell withChecklistItem:item];
     
     return cell;
 }
@@ -68,7 +69,7 @@
 {
     UILabel *label = (UILabel *)[cell viewWithTag:1001];
     
-    label.textColor = self.view.tintColor;
+    // label.textColor = self.view.tintColor;
     
     if (item.checked) {
         label.text = @"√";
@@ -81,7 +82,30 @@
 {
     UILabel *label = (UILabel *)[cell viewWithTag:1000];
     label.text = item.text;
+}
+
+- (void)configureDuedateTextForCell:(UITableViewCell *)cell withChecklistItem:(ChecklistItem *)item
+{
+    UILabel *label = (UILabel *)[cell viewWithTag:999];
+    if (item.dueDate == nil) {
+        label.text = @"(no due date)";
+    } else {
+        label.text = [item duteDateString];
+    }
     
+    if (!item.shouldRemind) {
+        [self strikeThroughLabel:label];
+    }
+    
+}
+
+- (void)strikeThroughLabel:(UILabel *)label
+{
+    NSDictionary *attributes = @{NSStrikethroughStyleAttributeName : [NSNumber numberWithInt:NSUnderlineStyleSingle]};
+    
+    NSAttributedString *attrStr = [[NSAttributedString alloc] initWithString:label.text attributes:attributes];
+    
+    [label setAttributedText:attrStr];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -99,25 +123,18 @@
 
 - (void)itemDetailViewController:(ItemDetailViewController *)controller didFinishAddingItem:(ChecklistItem *)item
 {
-    NSInteger newRowIndex = [self.checklist.items count];
     [self.checklist.items addObject:item];
-    
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newRowIndex inSection:0];
-    NSArray *indexPaths = @[indexPath];
-    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.checklist sortItems];
+    [self.tableView reloadData];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)itemDetailViewController:(ItemDetailViewController *)controller didFinishEditingItem:(ChecklistItem *)item
 {
-    NSInteger index = [self.checklist.items indexOfObject:item];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-    
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    
-    [self configureTextForCell:cell withChecklistItem:item];
-    
+
+    [self.checklist sortItems];
+    [self.tableView reloadData];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

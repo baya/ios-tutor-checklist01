@@ -56,5 +56,9 @@
     return [self.name localizedStandardCompare:otherChecklist.name];
 }
 
+- (void)sortItems
+{
+    [self.items sortUsingSelector:@selector(compare:)];
+}
 
 @end

@@ -42,7 +42,7 @@
 {
     [aCoder encodeObject:self.text forKey:@"Text"];
     [aCoder encodeBool:self.checked forKey:@"Checked"];
-    [aCoder encodeObject:self.dueDate forKey:@"ShouldRemind"];
+    [aCoder encodeObject:self.dueDate forKey:@"DueDate"];
     [aCoder encodeBool:self.shouldRemind forKey:@"ShouldRemind"];
     [aCoder encodeInteger:self.itemId forKey:@"ItemId"];
 }
@@ -101,6 +101,21 @@
         
         [[UIApplication sharedApplication] cancelLocalNotification:existingNotification];
     }
+}
+
+- (NSString *)duteDateString
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    
+    return [formatter stringFromDate:self.dueDate];
+}
+
+// 按照dueDate的大小顺序排序
+- (NSComparisonResult)compare:(ChecklistItem *)item
+{
+    return [self.dueDate compare:item.dueDate];
 }
 
 @end
